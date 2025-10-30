@@ -1,0 +1,14 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+  <div class="form-wrapper">
+
+    <h2>Login</h2>
+
+    {% if user.is_authenticated %}
+    <p> Ola, {{user.username}} -  clique <a href="{% url "home:logout" %}"> AQUI </a> para sair</P>
+    {% else %}
+    {% include "home/partial/user_form.html" %}
+    {% endif %}
+    
+{% endblock content %}

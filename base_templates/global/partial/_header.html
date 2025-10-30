@@ -1,0 +1,44 @@
+<header class="header-site">
+    <div class="header-box">
+        
+        <div class="header-left">
+            <a href="{% url 'home:index' %}" class="logo">Home</a>
+
+            <nav class="nav-bar">
+                <ul class="nav-list">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'home:favorites' %}" class="nav-link">Favoritos</a></li>
+                        <li><a href="{% url 'home:create' %}" class="nav-link">Adicionar</a></li>
+                        <li><a href="{% url 'home:perfil' %}" class="nav-link">Perfil</a></li>
+                    {% else %}
+                        <li><a href="{% url 'home:login' %}" class="nav-link">Entrar</a></li>
+                        <li><a href="{% url 'home:register' %}" class="nav-link">Criar conta</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="categories">
+                <form action="{% url 'home:index' %}" method="get">
+                    <select name="category" id="category" class="category-select" onchange="this.form.submit()">
+                        <option value="">Categorias</option>
+                        {% for cat in categories %}
+                            <option value="{{ cat.id }}"
+                                {% if selected_category == cat.id|stringformat:"s" %}selected{% endif %}>
+                                {{ cat.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+
+            <div class="search-box">
+                <form action="{% url 'home:search' %}" method="get">
+                    <input class="search-input" type="search" name="q" value="{{ search_value }}" placeholder="Procurar receita">
+                </form>
+            </div>
+        </div>
+
+    </div>
+</header>

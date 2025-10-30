@@ -1,0 +1,72 @@
+{% extends 'global/base.html' %} {% block content %}
+<div class="form-wrapper">
+  <h2>Criar receita</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+
+    <!-- ====================== INGREDIENTES ====================== -->
+    <h3>Ingredientes</h3>
+
+    <div id="ingredient-formset">
+      {{ ingredient_formset.management_form }}
+      <div id="ingredient-empty-form" style="display: none">
+        {{ ingredient_formset.empty_form.as_p }}
+      </div>
+      {% for f in ingredient_formset %}
+      <div class="ingredient-form">{{ f.as_p }}</div>
+      {% endfor %}
+
+    </div>
+    <button type="button" id="add-ingredient">+ Adicionar ingrediente</button>
+
+    <!-- ====================== INSTRUÇÕES ====================== -->
+    <h3>Instruções</h3>
+    <div id="instruction-formset">
+      {{ instruction_formset.management_form }}
+      <div id="instruction-empty-form" style="display: none">
+        {{ instruction_formset.empty_form.as_p }}
+      </div>
+      {% for f in instruction_formset%}
+      <div class="instruction-form">{{ f.as_p }}</div>
+      {% endfor %}
+    </div>
+    <button type="button" id="add-instruction">+ Adicionar instrução</button>
+
+    <br /><br />
+    <button type="submit">Salvar Receita</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function configurarFormset(prefixo, containerId, addButtonId,emptyFormId) {
+      const formsetDiv = document.getElementById(containerId);
+      const addBtn = document.getElementById(addButtonId);
+      const emptyForm = document.getElementById(emptyFormId);
+
+      if (!formsetDiv || !addBtn || !emptyForm) return;
+
+      const totalFormsInput = formsetDiv.querySelector(
+        `input[name='${prefixo}-TOTAL_FORMS']`
+      );
+
+      addBtn.addEventListener("click", function () {
+        const formCount = parseInt(totalFormsInput.value);
+        const newFormHtml = emptyForm.innerHTML.replace(/__prefix__/g, formCount);
+
+        
+        const wrapper = document.createElement("div");
+        wrapper.classList.add(`${prefixo}-form`);
+        wrapper.innerHTML = newFormHtml;
+
+        formsetDiv.appendChild(wrapper);
+        totalFormsInput.value = formCount + 1;
+      });
+    }
+
+    configurarFormset("ingredient", "ingredient-formset", "add-ingredient","ingredient-empty-form");
+    configurarFormset("instruction", "instruction-formset", "add-instruction","instruction-empty-form");
+  });
+</script>
+{% endblock content %}

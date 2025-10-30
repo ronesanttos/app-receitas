@@ -1,0 +1,57 @@
+{% extends "global/base.html" %} {% block content %}
+<div class="recipe-detail-container">
+  <div class="recipe-detail-card">
+    {% if recipe.image %}
+    <img
+      src="{{ recipe.image.url }}"
+      alt="{{ recipe.name }}"
+      class="recipe-detail-image"
+    />
+    {% endif %}
+
+    <a
+      href="{% url 'home:toggle_favorites' recipe.id %}"
+      class="btn-favorite-detail"
+    >
+      {% if recipe.id in user_favorites %} ❤️ {% else %} 🤍 {% endif %}
+    </a>
+    {% if user == recipe.owner %}
+    <div class="btns">
+      <a href="{% url 'home:update' recipe.id %}" class="btn-edite"
+        ><img
+          src="https://img.icons8.com/?&id=nb8QRk1ZSPxr&format=png&color=000000"
+          alt="logo edite"
+      /></a>
+      <a href="{% url 'home:delete' recipe.id %}" class="btn-delete"
+        ><img
+          src="https://img.icons8.com/?&id=107448&format=png&color=666666"
+          alt="logo delete"
+      /></a>
+    </div>
+    {% endif %}
+
+    <h1 class="recipe-detail-name">{{ recipe.name }}</h1>
+    <p class="recipe-detail-description">
+      Tempo de preparo {{ recipe.preparation_time }}
+    </p>
+    <p class="recipe-detail-description">
+      Tempo de cozimento {{recipe.cooking_time }}
+    </p>
+    <p class="recipe-detail-description">{{ recipe.description }}</p>
+
+    <h3>Ingredientes:</h3>
+    <ul>
+      {% for ing in recipe.ingredient.all %}
+      <li>{{ing.name}}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Instruções:</h3>
+    <ol>
+      {% for ing in recipe.instruction.all %}
+      <li>{{ing.step}}</li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+{% endblock content %}

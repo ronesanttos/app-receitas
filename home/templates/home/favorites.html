@@ -1,0 +1,29 @@
+{% extends "global/base.html" %} {% block content %}
+<div class="favorites_container">
+  <h1 class="favorites_title">Receitas Favoritas</h1>
+
+  {%if favorites%}
+  <ul class="favorites-list">
+    {%for fav in favorites %}
+    <li class="favorite-item">
+      {%if fav.recipe.image%}
+      <img src="{{fav.recipe.image.url}}" alt="{{fav.recipe.name}}" />
+      {%endif%}
+
+      <a href="{% url 'home:recipe_id' fav.recipe.id %}" class="favorite-name">
+        {{fav.recipe.name}}
+      </a>
+
+      <a
+        href="{% url 'home:toggle_favorites' fav.recipe.id %}"
+        class="btn-favorite-item"
+        >❤️</a
+      >
+    </li>
+    {%endfor%}
+  </ul>
+  {% else %}
+  <p class="no-favorites">Você não tem receitas salvas em favoritos.</p>
+  {% endif %}
+</div>
+{% endblock content %}

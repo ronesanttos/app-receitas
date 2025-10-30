@@ -1,0 +1,19 @@
+{% extends "global/base.html" %}
+{% block content %}
+<div class="confirm-delete-container">
+  <div class="confirm-delete">
+    <h2>Excluir receita</h2>
+
+    <p>
+      Tem certeza que deseja excluir a receita
+      <strong>{{ recipe.name }}</strong>?
+    </p>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" name="confirmation" value="yes">Sim, excluir</button>
+      <a href="{% url 'home:recipe_id' recipe.id %}">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock content %}

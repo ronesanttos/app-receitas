@@ -1,0 +1,57 @@
+{% extends "global/base.html" %} {% block content %}
+<div class="perfil">
+<h1>Bem vindo ao seu perfil, Sr.{{ user.username }}</h1>
+
+<nav>
+  <a href="{% url "home:update" %}">Editar Perfil</a>
+  <a href="{% url 'home:logout' %}" class="logout-btn">Sair</a>
+</nav>
+
+<div>
+  <h3>Minhas receitas</h3>
+
+  {% if page_obj %}
+  <div class="recipes-list">
+    {% for recipe in page_obj %}
+    <article class="recipe-card">
+      {% if recipe.image %}
+      <div class="recipe-media">
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" />
+        <span class="total-time"
+          >{{ recipe.total_time }}min</span
+        >
+      </div>
+      {% endif %}
+
+      <div class="recipe-info">
+        {% if user == recipe.owner %}
+        <div class="btns">
+          <a href="{% url 'home:update' recipe.id %}" class="btn-edite"
+            ><img
+              src="https://img.icons8.com/?&id=nb8QRk1ZSPxr&format=png&color=000000"
+              alt="logo edite"
+          /></a>
+          <a href="{% url 'home:delete' recipe.id %}" class="btn-delete"
+            ><img
+              src="https://img.icons8.com/?&id=107448&format=png&color=666666"
+              alt="logo delete"
+          /></a>
+        </div>
+        {% endif %}
+        <a href="{% url 'home:recipe_id' recipe.id %}" class="read-more">
+          {{ recipe.name }}
+        </a>
+      </div>
+    </article>
+
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <div class="no-recipes">
+    <h2>Nenhuma receita encontrada</h2>
+  </div>
+  {% endif %}
+</div>
+</div>
+{% endblock content %}

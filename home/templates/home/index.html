@@ -1,0 +1,32 @@
+{% extends "global/base.html" %}
+{% block content %}
+<div class="recipes-container">
+    <div class="recipes-box">
+        {% if page_obj %}
+        <div class="recipes-list">
+            {% for recipe in page_obj %}
+            <article class="recipe-card">
+                {% if recipe.image %}
+                <div class="recipe-media">
+                    <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+                    <span class="total-time">{{ recipe.total_time}}min</span>
+                </div>
+                {% endif %}
+
+                <div class="recipe-info">
+                    <div class="recipe-bottom">
+                        <a href="{% url 'home:recipe_id' recipe.id %}" class="read-more">{{recipe.name}}</a>
+                       
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-recipes">
+            <h1>Nenhum receita encontrada</h1>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
