@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Carregue os valores (para uso imediato)
 CLOUD_NAME_ENV = os.getenv('CLOUDINARY_CLOUD_NAME')
