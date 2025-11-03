@@ -12,6 +12,7 @@ ENV/
 # Configurações locais
 *.env
 .env.*
+.env
 
 # Banco de dados SQLite
 db.sqlite3
