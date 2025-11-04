@@ -28,7 +28,6 @@ media/
 # Arquivos coletados de static
 staticfiles/
 static_root/
-static/
 
 # Arquivos de migração temporários
 *.pot
