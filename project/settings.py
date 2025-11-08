@@ -6,7 +6,6 @@ from urllib.parse import urlparse, parse_qsl
 
 # Carregue o arquivo .env
 load_dotenv() 
-
 tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
