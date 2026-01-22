@@ -44,10 +44,10 @@ cd app-receitas
 2️⃣ Crie e ative um ambiente virtual
 - python -m venv venv
   
--Windows
+- Windows
  venv\Scripts\activate
 
- -Linux / Mac
+ - Linux / Mac
  source venv/bin/activate
 
 3️⃣ Instale as dependências
@@ -56,7 +56,17 @@ cd app-receitas
 4️⃣ Configure o banco de dados
 Você pode rodar com SQLite localmente (padrão) ou apontar para um PostgreSQL.
 Se for local (padrão):
--python manage.py migrate
+- python manage.py migrate
 
 5️⃣ Rodar o servidor
--python manage.py runserver
+- python manage.py runserver
+
+---
+
+👨‍💻 Autor
+
+Rone Santos
+Desenvolvedor Full Stack
+🐍 Python | Django | JavaScript
+
+🔗 GitHub: https://github.com/ronesanttos
