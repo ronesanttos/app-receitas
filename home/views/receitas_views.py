@@ -6,11 +6,14 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 def index(req):
-    recipes = Recipe.objects.order_by('-id')
+    category_id = req.GET.get('category')
+    recipes = Recipe.objects.select_related('category').order_by('-id')
     
     user_favorites = get_user_favorites(req)
     
-    #total = sum((item.get("tempo_preparo") or 0) + (item.get("tempo_cozimento") or 0) for #item in recipes.values('tempo_preparo','tempo_cozimento'))
+    if category_id:
+        recipes = recipes.filter(category_id=category_id)
+        
     paginator = Paginator(recipes,10)
     page_number = req.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -20,6 +23,7 @@ def index(req):
         'site_title': 'Receitas',
         'page_obj': page_obj,
         'user_favorites': user_favorites,
+        'category_selected': int(category_id) if category_id else None,
     }
     
     return render(req,
@@ -28,17 +32,21 @@ def index(req):
     
 def search(req):
     search_value = req.GET.get('q','').strip()
-    
+    category_id = req.GET.get('category')
+
     user_favorites = get_user_favorites(req)
     
     if search_value == '':
         return redirect('home:index')
     
-    recipes = Recipe.objects.select_related.filter(
+    recipes = Recipe.objects.select_related('category').filter(
         Q(name__icontains=search_value) |
         Q(description__icontains=search_value) |
         Q(category__name__icontains=search_value)
     ).order_by('-id')
+
+    if category_id:
+        recipes = recipes.filter(category_id=category_id)
     
     paginator = Paginator(recipes, 10)
     page_number = req.GET.get('page')

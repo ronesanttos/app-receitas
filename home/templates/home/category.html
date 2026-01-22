@@ -1,8 +1,9 @@
 <form method="get" class="category-form">
     <label for="category" class="category-label">Categoria:</label>
+
     <select name="category" id="category" class="category-select">
         {% for cat in categories %}
-            <option value="{{ cat.id }}">{{ cat.name }}</option>
+            <option value="{{ cat.id }}"  {% if category_selected == cat.id %}selected{% endif %}>{{ cat.name }}</option>
         {% endfor %}
     </select>
     <button type="submit" class="btn-category-submit"></button>
