@@ -35,7 +35,7 @@ body {
   font-weight: 700;
   color: #38a169;
   text-decoration: none;
-  padding-bottom: .4rem;
+  padding-bottom: 0.4rem;
 }
 
 /* Nav */
@@ -137,7 +137,9 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .favorite-item:hover {
@@ -177,7 +179,9 @@ body {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.2s, transform 0.1s;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
 }
 
 .btn-favorite-item:hover {
@@ -218,7 +222,9 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .recipe-media {
@@ -378,7 +384,9 @@ body {
   border: 1px solid #cfcfcf;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .form-wrapper input:focus,
@@ -430,7 +438,9 @@ body {
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
 }
 
 .form-wrapper button[type="submit"]:hover {
@@ -511,7 +521,6 @@ body {
 }
 .btn-edite {
   background-color: #38a1697a;
-
 }
 .btn-edite:hover {
   background-color: #38a169a8;
@@ -524,7 +533,6 @@ body {
 .btn-delete:hover {
   background-color: rgba(255, 0, 0, 0.644);
   transform: scale(1.2);
-
 }
 .btns img {
   width: 40px;
@@ -616,7 +624,9 @@ form {
   border: 1px solid #cfcfcf;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .form-group input:focus,
@@ -652,7 +662,9 @@ form {
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
 }
 
 .btn:hover {
@@ -747,7 +759,6 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 
 /* ======== Estilo geral ======== */
 
-
 .perfil h1 {
   text-align: center;
   color: #222;
@@ -799,17 +810,19 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
   background: #fff;
   border: 1px solid #eee;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   width: 100%;
   max-width: 300px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   position: relative;
 }
 
 .perfil .recipe-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* ======== Imagem e tempo ======== */
@@ -831,7 +844,7 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
   height: 20px;
   bottom: 10px;
   right: 10px;
-  background-color: #38A169;
+  background-color: #38a169;
   color: #fff;
   font-size: 0.9rem;
   padding: 5px 10px;
@@ -879,11 +892,13 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 }
 
 .perfil .btn-edite img {
-  filter: brightness(0) saturate(100%) invert(25%) sepia(77%) saturate(1400%) hue-rotate(210deg) brightness(95%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(25%) sepia(77%) saturate(1400%)
+    hue-rotate(210deg) brightness(95%) contrast(90%);
 }
 
 .perfil .btn-delete img {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(500%) hue-rotate(340deg) brightness(90%) contrast(90%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(500%)
+    hue-rotate(340deg) brightness(90%) contrast(90%);
 }
 
 /* ======== Nenhuma receita ======== */
@@ -899,6 +914,39 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 
 /* ======== Responsividade ======== */
 @media (max-width: 600px) {
+  .header-box {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .header-left,
+  .header-right {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
+  .category-select {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+  }
+
+  .search-input {
+    width: 110px;
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+
   .perfil nav {
     flex-direction: column;
     align-items: center;
