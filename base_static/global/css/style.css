@@ -939,11 +939,23 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
+  .perfil h1 {
+    font-size: 1.2rem;
+  }
   .search-input {
     width: 50vw;
   }
   .form-wrapper {
+    width: 90%;
     padding: 20px;
+    margin: 0 auto;
+  }
+
+  .form-wrapper form {
+    padding: 0.5rem;
+  }
+  .form-wrapper form p {
+    width: 90%;
   }
 
   #add-ingredient,
