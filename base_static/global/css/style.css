@@ -86,20 +86,6 @@ body {
   border-color: #38a169;
 }
 
-@media (max-width: 768px) {
-  .nav-list {
-    gap: 10px;
-  }
-
-  .header-left,
-  .header-right {
-    gap: 12px;
-  }
-
-  .search-input {
-    width: 120px;
-  }
-}
 /* CONTAINER PRINCIPAL FAVORITOS*/
 .favorites_container {
   max-width: 1000px;
@@ -222,6 +208,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
   transition:
     transform 0.2s,
     box-shadow 0.2s;
@@ -296,12 +283,6 @@ body {
 .no-recipes {
   text-align: center;
   padding: 60px 0;
-}
-
-@media (max-width: 600px) {
-  .recipe-media img {
-    height: 150px;
-  }
 }
 
 /*paginator*/
@@ -446,19 +427,6 @@ body {
 .form-wrapper button[type="submit"]:hover {
   background-color: #2f855a;
   transform: translateY(-1px);
-}
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .form-wrapper {
-    padding: 20px;
-  }
-
-  #add-ingredient,
-  #add-instruction,
-  .form-wrapper button[type="submit"] {
-    width: 100%;
-  }
 }
 
 /* CONTAINER PRINCIPAL */
@@ -670,13 +638,6 @@ form {
 .btn:hover {
   background-color: #2f855a;
   transform: translateY(-1px);
-}
-
-/* RESPONSIVO */
-@media (max-width: 480px) {
-  form {
-    padding: 20px 15px;
-  }
 }
 
 /* CONFIRMDETAIL.HTML */
@@ -913,7 +874,18 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 }
 
 /* ======== Responsividade ======== */
+/* RESPONSIVO */
+@media (max-width: 480px) {
+  form {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 @media (max-width: 600px) {
+  .header-site {
+    padding: 0.7rem;
+  }
   .header-box {
     flex-direction: row;
     align-items: center;
@@ -937,12 +909,13 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
   }
 
   .category-select {
+    width: 35vw;
     font-size: 0.8rem;
     padding: 4px 6px;
   }
 
   .search-input {
-    width: 110px;
+    width: 50vw;
     font-size: 0.8rem;
     padding: 5px 8px;
   }
@@ -958,5 +931,36 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 
   .perfil .recipe-media {
     height: 160px;
+  }
+  .recipe-media img {
+    height: 150px;
+  }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .search-input {
+    width: 50vw;
+  }
+  .form-wrapper {
+    padding: 20px;
+  }
+
+  #add-ingredient,
+  #add-instruction,
+  .form-wrapper button[type="submit"] {
+    width: 100%;
+  }
+  .nav-list {
+    gap: 10px;
+  }
+
+  .header-left,
+  .header-right {
+    gap: 12px;
+  }
+
+  .search-input {
+    width: 120px;
   }
 }
