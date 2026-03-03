@@ -542,21 +542,6 @@ ol li {
   line-height: 1.5;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .recipe-detail-card {
-    padding: 20px;
-  }
-
-  .recipe-detail-image {
-    height: 220px;
-  }
-
-  .recipe-detail-name {
-    font-size: 1.5rem;
-  }
-}
-
 /* CONTAINER DO FORMULÁRIO */
 form {
   max-width: 500px;
@@ -567,6 +552,10 @@ form {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
   font-family: "Segoe UI", sans-serif;
   color: #2d2d2d;
+}
+
+form p {
+  width: 95%;
 }
 
 /* GRUPOS DE CAMPOS */
@@ -730,6 +719,7 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 .perfil nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 15px;
   margin: 20px 0;
 }
@@ -948,7 +938,7 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
   .form-wrapper {
     width: 90%;
     padding: 20px;
-    margin: 0 auto;
+    margin: 1rem auto;
   }
 
   .form-wrapper form {
@@ -974,5 +964,17 @@ Borda e sombras leves	Cinza bem claro	#E6E6E6
 
   .search-input {
     width: 120px;
+  }
+
+   .recipe-detail-card {
+    padding: 20px;
+  }
+
+  .recipe-detail-image {
+    height: 220px;
+  }
+
+  .recipe-detail-name {
+    font-size: 1.5rem;
   }
 }
